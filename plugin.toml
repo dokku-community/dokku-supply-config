@@ -1,0 +1,4 @@
+[plugin]
+description = "supply dokku configuration files within your app repository"
+version = "1.0.0"
+[plugin.config]

@@ -1,21 +1,22 @@
 #!/usr/bin/env bash
 set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
 
-APP="$1"
-TMPDIR=$(mktemp -d)
+destroy_temp_dir() {
+  local APP="$1"
+  local TMPDIR
+  TMPDIR=$(mktemp -d)
+  trap 'rm -rf "$TMP_WORK_DIR" > /dev/null' RETURN
 
-echo -n "-----> Checking for config supplied in repo ... "
+  dokku_col_log_info1_quiet "Checking for config supplied in repo"
 
-cd "$TMPDIR" && git clone "$DOKKU_ROOT"/"$APP" repo > /dev/null 2>&1
+  cd "$TMPDIR" && git clone -q "$DOKKU_ROOT/$APP" repo > /dev/null 2>&1
 
-if [ -e repo/.dokku/* ] ; then
-	echo -n "found, importing: "
-	for file in repo/.dokku/* ; do
-		echo -n $(basename "$file")
-		cp "$file" "$DOKKU_ROOT"/"$APP"/
-	done
-	echo " OK."
-else
-	echo "no config supplied."
-fi
-trap "rm -rf '$TMPDIR'" SIGHUP SIGINT SIGTERM
+  if [[ -d "$TMPDIR/repo/.dokku" ]] && [[ "$(ls -A $TMPDIR/repo/.dokku)" ]]; then
+    for file in repo/.dokku/*; do
+      dokku_log_verbose_quiet $(basename "$file")
+      cp "$file" "$DOKKU_ROOT/$APP/"
+    done
+  fi
+}
+
+destroy_temp_dir "$1"
