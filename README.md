@@ -12,11 +12,11 @@ Supply dokku configuration files within your app repository.
 ```shell
 # on 0.3.x
 cd /var/lib/dokku/plugins
-git clone https://github.com/dokku/dokku-supply-config.git supply-config
+git clone https://github.com/heichblatt/dokku-supply-config.git supply-config
 dokku plugins-install
 
 # on 0.4.x
-dokku plugin:install https://github.com/dokku/dokku-supply-config.git supply-config
+dokku plugin:install https://github.com/heichblatt/dokku-supply-config.git supply-config
 ```
 
 ## hooks
