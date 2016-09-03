@@ -1,4 +1,4 @@
-# dokku-supply-config [![Build Status](https://img.shields.io/travis/heichblatt/dokku-supply-config.svg?branch=master "Build Status")](https://travis-ci.org/heichblatt/dokku-supply-config)
+# dokku-supply-config [![Build Status](https://img.shields.io/travis/josegonzalez/dokku-supply-config.svg?branch=master "Build Status")](https://travis-ci.org/josegonzalez/dokku-supply-config)
 
 Supply dokku configuration files within your app repository.
 
@@ -10,13 +10,8 @@ Supply dokku configuration files within your app repository.
 ## installation
 
 ```shell
-# on 0.3.x
-cd /var/lib/dokku/plugins
-git clone https://github.com/heichblatt/dokku-supply-config.git supply-config
-dokku plugins-install
-
 # on 0.4.x
-dokku plugin:install https://github.com/heichblatt/dokku-supply-config.git supply-config
+dokku plugin:install https://github.com/josegonzalez/dokku-supply-config.git supply-config
 ```
 
 ## hooks
