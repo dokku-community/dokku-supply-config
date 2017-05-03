@@ -14,7 +14,7 @@ destroy_temp_dir() {
 
   if [[ -d "$TMPDIR/repo/.dokku" ]] && [[ "$(ls -A "$TMPDIR/repo/.dokku")" ]]; then
     output=$(cp -r "$TMPDIR/repo/.dokku/." "$DOKKU_ROOT/$APP")
-    dokku_log_verbose_quiet $output
+    dokku_log_verbose_quiet "$output"
   fi
 }
 
