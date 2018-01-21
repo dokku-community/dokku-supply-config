@@ -1,4 +1,4 @@
-# dokku-supply-config [![Build Status](https://img.shields.io/travis/dokku-community/dokku-supply-config.svg?branch=master "Build Status")](https://travis-ci.org/josegonzalez/dokku-supply-config)
+# dokku-supply-config [![Build Status](https://img.shields.io/travis/dokku-community/dokku-supply-config.svg?branch=master "Build Status")](https://travis-ci.org/dokku-community/dokku-supply-config)
 
 Supply dokku configuration files within your app repository.
 
