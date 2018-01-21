@@ -5,18 +5,11 @@ source "$PLUGIN_CORE_AVAILABLE_PATH/common/functions"
 copy_config() {
   local APP="$1"
   local TMPDIR="$2"
-  #TMPDIR=$(mktemp -d)
   trap 'rm -rf "$TMP_WORK_DIR" > /dev/null' RETURN
 
-  dokku_col_log_info1_quiet "test: Checking for config supplied in repo"
+  dokku_col_log_info1_quiet "Checking for config supplied in repo"
 
-  #cd "$TMPDIR"
-  #echo "$TMPDIR"
-  dokku_col_log_info1_quiet "$TMPDIR"
-  # cd "$TMPDIR" && git clone -q "$DOKKU_ROOT/$APP" repo > /dev/null 2>&1
-  #echo "$(ls -la .)"
   if [[ -d "$TMPDIR/.dokku" ]] && [[ "$(ls -A "$TMPDIR/.dokku")" ]]; then
-    dokku_col_log_info1_quiet "inside if check"
     output=$(cp -r "$TMPDIR/.dokku/." "$DOKKU_ROOT/$APP")
     dokku_log_verbose_quiet "$output"
   fi
