@@ -18,8 +18,7 @@ dokku plugin:install https://github.com/josegonzalez/dokku-supply-config.git sup
 
 This plugin provides hooks:
 
-* `pre-build-buildpack`: copy configuration files into app directory
-* `pre-build-dockerfile`: copy configuration files into app directory
+* `post-extract`: copy configuration files into app directory
 
 ## usage
 This plugin allows you to store configuration files which reside in the dokku app directory, such as ENV, inside the app's git repository.
