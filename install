@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -eo pipefail;
+[[ $DOKKU_TRACE ]] && set -x
+
+
+echo "%dokku ALL=(ALL) NOPASSWD: /bin/cp, /usr/sbin/service cron restart" > /etc/sudoers.d/dokku-supply-config
+chmod 0440 "/etc/sudoers.d/dokku-supply-config"

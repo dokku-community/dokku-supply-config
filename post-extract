@@ -10,6 +10,12 @@ suppy-config-post-extract() {
   if [[ -d "$TMPDIR/.dokku" ]] && [[ "$(ls -A "$TMPDIR/.dokku")" ]]; then
     output=$(cp -r "$TMPDIR/.dokku/." "$DOKKU_ROOT/$APP")
     dokku_log_verbose_quiet "$output"
+
+    if [[ "$(ls -A "$TMPDIR/.dokku/crontab")" ]]; then
+        output=$(sudo cp -r "$TMPDIR/.dokku/crontab" "/etc/cron.d/$APP")
+        dokku_log_verbose_quiet "$output"
+        sudo service cron restart
+    fi
   fi
 }
 
