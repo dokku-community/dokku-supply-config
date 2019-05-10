@@ -24,3 +24,5 @@ This plugin provides hooks:
 This plugin allows you to store configuration files which reside in the dokku app directory, such as ENV, inside the app's git repository.
 
 For example, say you want to include a file called DOCKER_OPTIONS for the [Docker options plugin](https://github.com/dyson/dokku-docker-options). In the root directory of your app repository, create a directory called `.dokku` and put the files in there. This plugin will copy those files into `$DOKKU_ROOT/$APP/` before building the app.
+
+Optionally if you place a `crontab` in `.dokku` it will move this crontab file to `/etc/cron.d/$APP`
